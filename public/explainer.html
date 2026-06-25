@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The colour theory behind Place Itten</title>
+    <meta
+      name="description"
+      content="How Place Itten turns Johannes Itten's colour theory — the 12-hue wheel and his seven colour contrasts — into placeholder images, explained."
+    />
+    <style>
+      :root {
+        --yellow: #f7d417;
+        --red: #be1e2d;
+        --blue: #0061a8;
+        --ink: #141414;
+        --paper: #f4f1ea;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.6;
+      }
+      a { color: var(--blue); }
+      code {
+        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+      header {
+        padding: 3rem 1.5rem 2rem;
+        max-width: 62rem;
+        margin: 0 auto;
+      }
+      .back { font-size: 0.9rem; text-decoration: none; }
+      .mark { display: flex; gap: 0.4rem; margin: 1.25rem 0 1.5rem; }
+      .mark span { width: 28px; height: 28px; display: inline-block; }
+      .mark .c { border-radius: 50%; }
+      .mark .t { width: 0; height: 0; background: none !important;
+        border-left: 14px solid transparent; border-right: 14px solid transparent; }
+      h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0; letter-spacing: -0.03em; }
+      .lede { font-size: 1.2rem; max-width: 42rem; }
+      main { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
+      section { margin-top: 3.5rem; }
+      h2 { font-size: 1.6rem; border-bottom: 3px solid var(--ink); padding-bottom: 0.3rem; }
+      h3 { font-size: 1.15rem; margin-bottom: 0.2rem; }
+      p { max-width: 46rem; }
+
+      /* --- colour wheel --- */
+      .wheel-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+      .wheel {
+        flex: 0 0 auto;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #f7d417 0deg 30deg,
+          #f59b00 30deg 60deg,
+          #ed6a00 60deg 90deg,
+          #e1470e 90deg 120deg,
+          #be1e2d 120deg 150deg,
+          #a2195b 150deg 180deg,
+          #652d86 180deg 210deg,
+          #2e3192 210deg 240deg,
+          #0061a8 240deg 270deg,
+          #00a19a 270deg 300deg,
+          #00a651 300deg 330deg,
+          #8cc63f 330deg 360deg
+        );
+        box-shadow: 0 1px 0 #ddd, inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+        position: relative;
+      }
+      .wheel::after {
+        content: "";
+        position: absolute;
+        inset: 33%;
+        border-radius: 50%;
+        background: var(--paper);
+      }
+      .legend {
+        flex: 1 1 18rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+        gap: 0.4rem 1rem;
+        font-size: 0.85rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .legend li { display: flex; align-items: center; gap: 0.5rem; }
+      .legend .sw { width: 16px; height: 16px; flex: 0 0 auto; border: 1px solid rgba(0,0,0,.15); }
+      .legend .hex { color: #777; font-family: "SF Mono", ui-monospace, Menlo, monospace; margin-left: auto; }
+
+      /* --- contrast cards --- */
+      .contrast {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 1.5rem;
+        align-items: start;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #ddd;
+      }
+      .contrast:first-of-type { border-top: none; }
+      .contrast img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid #ddd;
+        background: #fff;
+      }
+      .contrast .meta code { display: inline-block; margin-top: 0.5rem; }
+      @media (max-width: 38rem) {
+        .contrast { grid-template-columns: 1fr; }
+      }
+
+      /* --- pipeline --- */
+      ol.pipeline { max-width: 46rem; padding-left: 1.2rem; }
+      ol.pipeline li { margin: 0.6rem 0; }
+
+      footer {
+        max-width: 62rem;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        border-top: 1px solid #ddd;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="back" href="/">← Place Itten</a>
+      <div class="mark" aria-hidden="true">
+        <span class="c" style="background: var(--yellow)"></span>
+        <span style="background: var(--red)"></span>
+        <span class="t" style="border-bottom: 28px solid var(--blue)"></span>
+      </div>
+      <h1>The colour theory<br />behind Place Itten</h1>
+      <p class="lede">
+        Every image this service returns is built from the colour system
+        Johannes Itten taught at the Bauhaus. Here's the theory — and exactly
+        how each idea becomes pixels.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Johannes Itten &amp; the Bauhaus</h2>
+        <p>
+          <strong>Johannes Itten</strong> (1888–1967) was a Swiss painter and one
+          of the first masters at the <em>Bauhaus</em>, where he ran the famous
+          preliminary course. His book <em>The Art of Color</em> (1961) laid out
+          a practical grammar of colour: a wheel to organise the hues, and a set
+          of <strong>seven contrasts</strong> describing the distinct ways two or
+          more colours can act on each other. Place Itten borrows both — the
+          wheel supplies the colours, the contrasts decide how they're paired.
+        </p>
+      </section>
+
+      <section>
+        <h2>The 12-hue wheel (Farbkreis)</h2>
+        <p>
+          Itten's wheel starts from the three <strong>primaries</strong> — yellow,
+          red, blue — mixes them into three <strong>secondaries</strong>, and fills
+          the gaps with six <strong>tertiaries</strong> for twelve hues in all.
+          Two facts about this ordering drive everything downstream: colours
+          directly across the wheel (positions <code>i</code> and
+          <code>i + 6</code>) are <strong>complementaries</strong>, and the wheel
+          divides into a <strong>warm half</strong> (yellow → red-violet) and a
+          <strong>cool half</strong> (violet → yellow-green).
+        </p>
+        <div class="wheel-row">
+          <div class="wheel" role="img" aria-label="Itten's twelve-hue colour wheel"></div>
+          <ul class="legend">
+            <li><span class="sw" style="background:#f7d417"></span> yellow <span class="hex">#F7D417</span></li>
+            <li><span class="sw" style="background:#f59b00"></span> yellow-orange <span class="hex">#F59B00</span></li>
+            <li><span class="sw" style="background:#ed6a00"></span> orange <span class="hex">#ED6A00</span></li>
+            <li><span class="sw" style="background:#e1470e"></span> red-orange <span class="hex">#E1470E</span></li>
+            <li><span class="sw" style="background:#be1e2d"></span> red <span class="hex">#BE1E2D</span></li>
+            <li><span class="sw" style="background:#a2195b"></span> red-violet <span class="hex">#A2195B</span></li>
+            <li><span class="sw" style="background:#652d86"></span> violet <span class="hex">#652D86</span></li>
+            <li><span class="sw" style="background:#2e3192"></span> blue-violet <span class="hex">#2E3192</span></li>
+            <li><span class="sw" style="background:#0061a8"></span> blue <span class="hex">#0061A8</span></li>
+            <li><span class="sw" style="background:#00a19a"></span> blue-green <span class="hex">#00A19A</span></li>
+            <li><span class="sw" style="background:#00a651"></span> green <span class="hex">#00A651</span></li>
+            <li><span class="sw" style="background:#8cc63f"></span> yellow-green <span class="hex">#8CC63F</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>The seven contrasts</h2>
+        <p>
+          Each contrast is a different relationship between colours. Place Itten
+          implements all seven as palette generators; the live image beside each
+          one is produced by this service right now. Force any of them with
+          <code>?contrast=</code>.
+        </p>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=hue&seed=star" alt="Contrast of hue example" loading="lazy" />
+          <div class="meta">
+            <h3>1 · Contrast of hue</h3>
+            <p>
+              The undiluted power of pure, saturated colours. Place Itten takes an
+              evenly spaced <strong>triad</strong> from the wheel (positions
+              <code>i</code>, <code>i+4</code>, <code>i+8</code>), so no hue
+              dominates — at its purest, yellow / red / blue.
+            </p>
+            <code>?contrast=hue</code>
+          </div>
+        </div>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=light-dark&seed=value" alt="Light-dark contrast example" loading="lazy" />
+          <div class="meta">
+            <h3>2 · Light-dark contrast</h3>
+            <p>
+              The interplay of brightness. A single hue is stepped through five
+              <strong>values</strong>, from a 60% tint toward white down to a 60%
+              shade toward black.
+            </p>
+            <code>?contrast=light-dark</code>
+          </div>
+        </div>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=cold-warm&seed=temp" alt="Cold-warm contrast example" loading="lazy" />
+          <div class="meta">
+            <h3>3 · Cold-warm contrast</h3>
+            <p>
+              Temperature. A colour from the <strong>warm half</strong> of the wheel
+              is set against one from the <strong>cool half</strong> — Itten called
+              this the most expressive of the contrasts.
+            </p>
+            <code>?contrast=cold-warm</code>
+          </div>
+        </div>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=complementary&seed=oppo" alt="Complementary contrast example" loading="lazy" />
+          <div class="meta">
+            <h3>4 · Complementary contrast</h3>
+            <p>
+              A hue and its exact opposite across the wheel (<code>i</code> and
+              <code>i+6</code>). Mixed they cancel to grey; side by side they push
+              each other to maximum vividness.
+            </p>
+            <code>?contrast=complementary</code>
+          </div>
+        </div>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=simultaneous&seed=shimmer" alt="Simultaneous contrast example" loading="lazy" />
+          <div class="meta">
+            <h3>5 · Simultaneous contrast</h3>
+            <p>
+              An optical illusion. A vivid hue sits beside a neutral
+              <strong>grey nudged 12% toward its complement</strong>; the eye then
+              makes the grey shimmer with a colour that isn't physically there.
+            </p>
+            <code>?contrast=simultaneous</code>
+          </div>
+        </div>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=saturation&seed=mute" alt="Saturation contrast example" loading="lazy" />
+          <div class="meta">
+            <h3>6 · Saturation contrast</h3>
+            <p>
+              Intensity, not hue. The same colour appears <strong>vivid versus
+              muted</strong> — the muted version mixed 70% toward its own
+              perceptual grey.
+            </p>
+            <code>?contrast=saturation</code>
+          </div>
+        </div>
+
+        <div class="contrast">
+          <img src="/240x180?contrast=extension&seed=ratio" alt="Extension contrast example" loading="lazy" />
+          <div class="meta">
+            <h3>7 · Contrast of extension (quantity)</h3>
+            <p>
+              How much area each colour gets. Itten gave complementaries
+              <strong>harmonious proportions</strong> — the brighter a colour, the
+              smaller its share. Place Itten weights each field by
+              <code>1 / light value</code>, so brilliant yellow takes a sliver
+              while deep violet fills the rest.
+            </p>
+            <code>?contrast=extension</code>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>From theory to PNG</h2>
+        <p>
+          Every request walks the same deterministic pipeline. The same URL always
+          produces byte-identical pixels, which is what makes the images usable as
+          stable mockup placeholders.
+        </p>
+        <ol class="pipeline">
+          <li>
+            A <strong>seed</strong> is taken from <code>?seed=</code>, or derived
+            from the requested dimensions when none is given.
+          </li>
+          <li>
+            The seed is hashed (<code>xmur3</code>) into a 32-bit number that feeds
+            a tiny seeded PRNG (<code>mulberry32</code>) — deterministic
+            randomness.
+          </li>
+          <li>
+            That PRNG (or your <code>?contrast=</code> override) picks
+            <strong>one of the seven contrasts</strong>.
+          </li>
+          <li>
+            The contrast's generator pulls hues from the 12-hue wheel and returns a
+            <strong>palette</strong>: a list of colours plus area
+            <strong>weights</strong>.
+          </li>
+          <li>
+            A second, independent PRNG stream chooses a <strong>Bauhaus layout</strong>
+            — weighted split, stripes, a Mondrian-style grid, a diagonal, or
+            floating shapes. (The extension contrast always uses the weighted split,
+            so its area ratios stay visible.)
+          </li>
+          <li>
+            <code>pureimage</code> rasterises the composition and encodes it to a
+            <strong>PNG</strong> — pure JavaScript, no native dependencies, happy on
+            a serverless function.
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      Named after <strong>Johannes Itten</strong> (1888–1967), Bauhaus master and
+      author of <em>The Art of Color</em>. ·
+      <a href="/">Back to Place Itten</a>
+    </footer>
+  </body>
+</html>
