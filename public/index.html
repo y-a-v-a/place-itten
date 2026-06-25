@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Place Itten — colour-theory placeholder images</title>
+    <meta
+      name="description"
+      content="On-the-fly placeholder PNGs generated from Johannes Itten's colour theory: the 12-hue wheel and his 7 colour contrasts."
+    />
+    <style>
+      :root {
+        --yellow: #f7d417;
+        --red: #be1e2d;
+        --blue: #0061a8;
+        --ink: #141414;
+        --paper: #f4f1ea;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.5;
+      }
+      header {
+        padding: 3rem 1.5rem 2rem;
+        max-width: 60rem;
+        margin: 0 auto;
+      }
+      .mark {
+        display: flex;
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
+      }
+      .mark span { width: 28px; height: 28px; display: inline-block; }
+      .mark .c { border-radius: 50%; }
+      h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 0; letter-spacing: -0.03em; }
+      .lede { font-size: 1.25rem; max-width: 40rem; }
+      code {
+        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+      }
+      main { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
+      section { margin-top: 3rem; }
+      h2 { font-size: 1.5rem; border-bottom: 3px solid var(--ink); padding-bottom: 0.3rem; }
+      .usage li { margin: 0.4rem 0; }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+      }
+      figure { margin: 0; }
+      figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid #ddd;
+        background: #fff;
+      }
+      figcaption {
+        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+        color: #555;
+      }
+      footer {
+        max-width: 60rem;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        border-top: 1px solid #ddd;
+        font-size: 0.9rem;
+        color: #555;
+      }
+      a { color: var(--blue); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="mark" aria-hidden="true">
+        <span class="c" style="background: var(--yellow)"></span>
+        <span style="background: var(--red)"></span>
+        <span class="c" style="background: var(--blue)"></span>
+      </div>
+      <h1>Place Itten</h1>
+      <p class="lede">
+        Placeholder images for your mockups — generated on the fly from
+        <strong>Johannes Itten's colour theory</strong>: his 12-hue wheel and
+        his seven colour contrasts. A successor in spirit to placekitten,
+        swapping cats for the Bauhaus.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2>How to use it</h2>
+        <ul class="usage">
+          <li><code>/200x300</code> — a 200×300 PNG.</li>
+          <li><code>/200</code> — shorthand for a 200×200 square.</li>
+          <li><code>/200x200?seed=anything</code> — pick a different palette; the same seed always returns the same image.</li>
+          <li>
+            <code>/200x200?contrast=complementary</code> — force one of Itten's
+            contrasts: <code>hue</code>, <code>light-dark</code>,
+            <code>cold-warm</code>, <code>complementary</code>,
+            <code>simultaneous</code>, <code>saturation</code>,
+            <code>extension</code>.
+          </li>
+        </ul>
+        <p>Drop it straight into an <code>&lt;img&gt;</code> tag or any CSS <code>background-image</code>.</p>
+      </section>
+
+      <section>
+        <h2>The seven contrasts</h2>
+        <div class="gallery">
+          <figure>
+            <img src="/300x300?contrast=hue&seed=star" alt="Contrast of hue" loading="lazy" />
+            <figcaption>contrast=hue</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?contrast=light-dark&seed=value" alt="Light-dark contrast" loading="lazy" />
+            <figcaption>contrast=light-dark</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?contrast=cold-warm&seed=temp" alt="Cold-warm contrast" loading="lazy" />
+            <figcaption>contrast=cold-warm</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?contrast=complementary&seed=oppo" alt="Complementary contrast" loading="lazy" />
+            <figcaption>contrast=complementary</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?contrast=simultaneous&seed=shimmer" alt="Simultaneous contrast" loading="lazy" />
+            <figcaption>contrast=simultaneous</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?contrast=saturation&seed=mute" alt="Saturation contrast" loading="lazy" />
+            <figcaption>contrast=saturation</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?contrast=extension&seed=ratio" alt="Extension contrast" loading="lazy" />
+            <figcaption>contrast=extension</figcaption>
+          </figure>
+          <figure>
+            <img src="/300x300?seed=surprise" alt="Random contrast" loading="lazy" />
+            <figcaption>?seed=surprise</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Named after <strong>Johannes Itten</strong> (1888–1967), Bauhaus master
+      and author of <em>The Art of Color</em>. Every image is generated from
+      his colour wheel and contrasts — no two seeds alike.
+    </footer>
+  </body>
+</html>

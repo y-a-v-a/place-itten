@@ -1,0 +1,5 @@
+node_modules/
+.vercel/
+*.png
+!public/**/*.png
+.DS_Store
