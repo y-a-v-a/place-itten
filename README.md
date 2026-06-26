@@ -56,7 +56,8 @@ api/render.js     Vercel handler: parse → palette → render → stream PNG
 lib/itten.js      wheel data, seeded RNG, the 7 contrast generators
 lib/render.js     geometric composition + PNG encoding
 lib/parse.js      URL/dimension parsing & validation
-public/index.html homepage with live examples
+public/index.html    homepage with live examples
+public/explainer.html the colour theory, explained
 test/             node:test unit tests
 ```
 
@@ -73,8 +74,30 @@ Then open <http://localhost:3000/> for the gallery, or hit
 
 ## Deploy
 
-Deploy to Vercel and point the `placeitten.org` domain at the project. No build
-step or environment variables are required.
+The project is zero-config on **Vercel**: `api/render.js` is auto-detected as a
+Node serverless function, `public/` is served as static assets, and
+`vercel.json` wires up the pretty URLs. No build step or environment variables
+are required.
+
+**Option A — Git integration (recommended).** Push this repo to GitHub/GitLab,
+then in the Vercel dashboard choose *Add New → Project* and import it. Vercel
+reads `vercel.json` automatically; every push to the production branch redeploys.
+
+**Option B — Vercel CLI.**
+
+```sh
+npm i -g vercel
+vercel          # first run links the project and deploys a preview
+vercel --prod   # promote to production
+```
+
+**Custom domain.** In the project's *Settings → Domains*, add `placeitten.org`
+(and `www.placeitten.org`), then create the DNS records Vercel shows you at your
+registrar — typically an `A` record for the apex and a `CNAME` to
+`cname.vercel-dns.com` for `www`. TLS certificates are issued automatically once
+DNS resolves.
+
+That's it — DNS is the only step that lives outside this repo.
 
 ---
 
