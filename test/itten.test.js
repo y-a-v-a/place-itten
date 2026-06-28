@@ -22,11 +22,11 @@ test('different seeds generally differ', () => {
   assert.notDeepEqual(a, b);
 });
 
-test('forced contrast is honoured and produces >=2 colours', () => {
+test('forced contrast is honored and produces >=2 colors', () => {
   for (const c of CONTRASTS) {
     const p = pickPalette('seed-' + c, c);
     assert.equal(p.contrast, c);
-    assert.ok(p.colors.length >= 2, `${c} should yield at least 2 colours`);
+    assert.ok(p.colors.length >= 2, `${c} should yield at least 2 colors`);
     assert.equal(p.colors.length, p.weights.length);
     for (const hex of p.colors) assert.match(hex, /^#[0-9A-Fa-f]{6}$/);
   }

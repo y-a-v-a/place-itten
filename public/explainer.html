@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The colour theory behind Place Itten</title>
+    <title>The color theory behind Place Itten</title>
     <meta
       name="description"
-      content="How Place Itten turns Johannes Itten's colour theory — the 12-hue wheel and his seven colour contrasts — into placeholder images, explained."
+      content="How Place Itten turns Johannes Itten's color theory — the 12-hue wheel and his seven color contrasts — into placeholder images, explained."
     />
     <!-- The favicon is the service rendering itself: a live 32×32 PNG. -->
     <link rel="icon" type="image/png" sizes="32x32" href="/32x32" />
@@ -54,7 +54,7 @@
       h3 { font-size: 1.15rem; margin-bottom: 0.2rem; }
       p { max-width: 46rem; }
 
-      /* --- colour wheel --- */
+      /* --- color wheel --- */
       .wheel-row {
         display: flex;
         flex-wrap: wrap;
@@ -150,9 +150,9 @@
         <span style="background: var(--red)"></span>
         <span class="t" style="border-bottom: 28px solid var(--blue)"></span>
       </div>
-      <h1>The colour theory<br />behind Place Itten</h1>
+      <h1>The color theory<br />behind Place Itten</h1>
       <p class="lede">
-        Every image this service returns is built from the colour system
+        Every image this service returns is built from the color system
         Johannes Itten taught at the Bauhaus. Here's the theory — and exactly
         how each idea becomes pixels.
       </p>
@@ -165,10 +165,10 @@
           <strong>Johannes Itten</strong> (1888–1967) was a Swiss painter and one
           of the first masters at the <em>Bauhaus</em>, where he ran the famous
           preliminary course. His book <em>The Art of Color</em> (1961) laid out
-          a practical grammar of colour: a wheel to organise the hues, and a set
+          a practical grammar of color: a wheel to organize the hues, and a set
           of <strong>seven contrasts</strong> describing the distinct ways two or
-          more colours can act on each other. Place Itten borrows both — the
-          wheel supplies the colours, the contrasts decide how they're paired.
+          more colors can act on each other. Place Itten borrows both — the
+          wheel supplies the colors, the contrasts decide how they're paired.
         </p>
       </section>
 
@@ -178,14 +178,14 @@
           Itten's wheel starts from the three <strong>primaries</strong> — yellow,
           red, blue — mixes them into three <strong>secondaries</strong>, and fills
           the gaps with six <strong>tertiaries</strong> for twelve hues in all.
-          Two facts about this ordering drive everything downstream: colours
+          Two facts about this ordering drive everything downstream: colors
           directly across the wheel (positions <code>i</code> and
           <code>i + 6</code>) are <strong>complementaries</strong>, and the wheel
           divides into a <strong>warm half</strong> (yellow → red-violet) and a
           <strong>cool half</strong> (violet → yellow-green).
         </p>
         <div class="wheel-row">
-          <div class="wheel" role="img" aria-label="Itten's twelve-hue colour wheel"></div>
+          <div class="wheel" role="img" aria-label="Itten's twelve-hue color wheel"></div>
           <ul class="legend">
             <li><span class="sw" style="background:#f7d417"></span> yellow <span class="hex">#F7D417</span></li>
             <li><span class="sw" style="background:#f59b00"></span> yellow-orange <span class="hex">#F59B00</span></li>
@@ -206,7 +206,7 @@
       <section>
         <h2>The seven contrasts</h2>
         <p>
-          Each contrast is a different relationship between colours. Place Itten
+          Each contrast is a different relationship between colors. Place Itten
           implements all seven as palette generators; the live image beside each
           one is produced by this service right now. Force any of them with
           <code>?contrast=</code>.
@@ -217,7 +217,7 @@
           <div class="meta">
             <h3>1 · Contrast of hue</h3>
             <p>
-              The undiluted power of pure, saturated colours. Place Itten takes an
+              The undiluted power of pure, saturated colors. Place Itten takes an
               evenly spaced <strong>triad</strong> from the wheel (positions
               <code>i</code>, <code>i+4</code>, <code>i+8</code>), so no hue
               dominates — at its purest, yellow / red / blue.
@@ -244,7 +244,7 @@
           <div class="meta">
             <h3>3 · Cold-warm contrast</h3>
             <p>
-              Temperature. A colour from the <strong>warm half</strong> of the wheel
+              Temperature. A color from the <strong>warm half</strong> of the wheel
               is set against one from the <strong>cool half</strong> — Itten called
               this the most expressive of the contrasts.
             </p>
@@ -258,7 +258,7 @@
             <h3>4 · Complementary contrast</h3>
             <p>
               A hue and its exact opposite across the wheel (<code>i</code> and
-              <code>i+6</code>). Mixed they cancel to grey; side by side they push
+              <code>i+6</code>). Mixed they cancel to gray; side by side they push
               each other to maximum vividness.
             </p>
             <code>?contrast=complementary</code>
@@ -271,8 +271,8 @@
             <h3>5 · Simultaneous contrast</h3>
             <p>
               An optical illusion. A vivid hue sits beside a neutral
-              <strong>grey nudged 12% toward its complement</strong>; the eye then
-              makes the grey shimmer with a colour that isn't physically there.
+              <strong>gray nudged 12% toward its complement</strong>; the eye then
+              makes the gray shimmer with a color that isn't physically there.
             </p>
             <code>?contrast=simultaneous</code>
           </div>
@@ -283,9 +283,9 @@
           <div class="meta">
             <h3>6 · Saturation contrast</h3>
             <p>
-              Intensity, not hue. The same colour appears <strong>vivid versus
+              Intensity, not hue. The same color appears <strong>vivid versus
               muted</strong> — the muted version mixed 70% toward its own
-              perceptual grey.
+              perceptual gray.
             </p>
             <code>?contrast=saturation</code>
           </div>
@@ -296,8 +296,8 @@
           <div class="meta">
             <h3>7 · Contrast of extension (quantity)</h3>
             <p>
-              How much area each colour gets. Itten gave complementaries
-              <strong>harmonious proportions</strong> — the brighter a colour, the
+              How much area each color gets. Itten gave complementaries
+              <strong>harmonious proportions</strong> — the brighter a color, the
               smaller its share. Place Itten weights each field by
               <code>1 / light value</code>, so brilliant yellow takes a sliver
               while deep violet fills the rest.
@@ -330,7 +330,7 @@
           </li>
           <li>
             The contrast's generator pulls hues from the 12-hue wheel and returns a
-            <strong>palette</strong>: a list of colours plus area
+            <strong>palette</strong>: a list of colors plus area
             <strong>weights</strong>.
           </li>
           <li>
@@ -340,7 +340,7 @@
             so its area ratios stay visible.)
           </li>
           <li>
-            <code>pureimage</code> rasterises the composition and encodes it to a
+            <code>pureimage</code> rasterizes the composition and encodes it to a
             <strong>PNG</strong> — pure JavaScript, no native dependencies, happy on
             a serverless function.
           </li>
