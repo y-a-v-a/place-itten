@@ -1,7 +1,7 @@
 # Place Itten
 
 Placeholder images for mockups — generated on the fly from **Johannes Itten's
-colour theory**. A spiritual successor to the late placekitten, swapping cats
+color theory**. A spiritual successor to the late placekitten, swapping cats
 for the Bauhaus.
 
 A request like:
@@ -10,8 +10,8 @@ A request like:
 GET https://www.placeitten.org/200x200
 ```
 
-returns a 200×200 PNG composed from two or more colours drawn from Itten's
-**12-hue colour wheel** and one of his **seven colour contrasts**, laid out as a
+returns a 200×200 PNG composed from two or more colors drawn from Itten's
+**12-hue color wheel** and one of his **seven color contrasts**, laid out as a
 Bauhaus-style geometric composition. Everything is generated per-request in pure
 JavaScript — no image assets are stored.
 
@@ -22,7 +22,7 @@ a popular placeholder-image tool from around 2014 — created by
 [**Jonathan Howard**](https://www.linkedin.com/in/staringispolite/) — that served
 stand-in kitten photos at any size you asked for. It has since gone defunct.
 Place Itten keeps the `/WIDTHxHEIGHT` spirit but swaps the cats for
-**Johannes Itten's** colour theory — kitten → Itten.
+**Johannes Itten's** color theory — kitten → Itten.
 
 ## Routes
 
@@ -40,7 +40,7 @@ Dimensions are clamped to 1–1500px per side. The response carries
 `Cache-Control: public, max-age=31536000, immutable` (output is deterministic
 for a given URL) and an `X-Itten-Contrast` header noting the chosen contrast.
 
-## The colour theory
+## The color theory
 
 - **12-hue wheel** (`lib/itten.js` → `ITTEN_WHEEL`): the Farbkreis, where hue
   `i` and `(i + 6) % 12` are complementaries; indices 0–5 are the warm half,
@@ -66,7 +66,7 @@ lib/itten.js      wheel data, seeded RNG, the 7 contrast generators
 lib/render.js     geometric composition + PNG encoding
 lib/parse.js      URL/dimension parsing & validation
 public/index.html    homepage with live examples
-public/explainer.html the colour theory, explained
+public/explainer.html the color theory, explained
 test/             node:test unit tests
 ```
 
