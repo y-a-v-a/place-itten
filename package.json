@@ -4,7 +4,7 @@
   "description": "Placeholder image service that generates on-the-fly PNGs from Johannes Itten's color theory (12-hue wheel + 7 color contrasts).",
   "type": "module",
   "license": "MIT",
-  "author": "Place Itten",
+  "author": "Vincent Bruijn (https://www.vincentbruijn.nl)",
   "scripts": {
     "test": "node --test",
     "dev": "vercel dev"

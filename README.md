@@ -99,6 +99,10 @@ DNS resolves.
 
 That's it — DNS is the only step that lives outside this repo.
 
+## License
+
+[MIT](LICENSE) © 2026 [Vincent Bruijn](https://www.vincentbruijn.nl).
+
 ---
 
 Named after **Johannes Itten** (1888–1967), Bauhaus master and author of
