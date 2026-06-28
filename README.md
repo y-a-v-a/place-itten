@@ -18,10 +18,11 @@ JavaScript — no image assets are stored.
 ## Why "Place Itten"?
 
 The name is a play on [**placekitten.com**](https://www.producthunt.com/products/place-kitten),
-a popular placeholder-image tool from around 2014 that served stand-in kitten
-photos at any size you asked for. It has since gone defunct. Place Itten keeps
-the `/WIDTHxHEIGHT` spirit but swaps the cats for **Johannes Itten's** colour
-theory — kitten → Itten.
+a popular placeholder-image tool from around 2014 — created by
+[**Jonathan Howard**](https://www.linkedin.com/in/staringispolite/) — that served
+stand-in kitten photos at any size you asked for. It has since gone defunct.
+Place Itten keeps the `/WIDTHxHEIGHT` spirit but swaps the cats for
+**Johannes Itten's** colour theory — kitten → Itten.
 
 ## Routes
 
